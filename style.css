@@ -39,8 +39,8 @@ header h2 {
 .about-photo {
   flex: 1;
   background-image: 
-    linear-gradient(to right, rgba(0,139,139,0.8), rgba(0,139,139,0.2)), 
-    url("assets/photo.jpg");
+    linear-gradient(to left, rgba(0,139,139,0.8), rgba(0,139,139,0.2)), 
+    url("files/Eddy_Zoe.jpg");
   background-size: cover;
   background-position: center;
   background-blend-mode: multiply;
