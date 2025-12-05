@@ -105,12 +105,12 @@ nav a:hover {
 /* Right column: background image that blends into the teal gradient */
 .about-photo {
   flex: 1;                          /* takes the other half of the horizontal space */
-  background-image:
-    linear-gradient(to left, rgba(0,139,139,0.6), rgba(0,139,139,0.1)), /* teal overlay */
-    url("/files/Eddy_Zoe.jpg");        /* replace path if your image lives elsewhere */
+  background-image: url("/files/Eddy_Zoe.jpg");        /* path to image   */
   background-size: cover;           /* crop/scale image to fully fill the box */
   background-position: center;      /* center the image focal point */
-  background-blend-mode: multiply;  /* blend the teal overlay with the photo */
+  background-repeat: no-repeat;     /* ensures it doesn’t tile */
+   
+  /* background-blend-mode: multiply;  /* blend the teal overlay with the photo */ */
 }
 
 /* -----------------------
