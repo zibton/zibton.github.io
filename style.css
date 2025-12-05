@@ -1,14 +1,19 @@
-/* Reset and typography */
+/* -----------------------
+   Basic reset & base fonts
+   ----------------------- */
+/* Remove default spacing and ensure box sizing is predictable */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box; /* makes width/padding behave intuitively */
 }
 
+/* Base body typography and global vertical gradient background.
+   The gradient is the continuous teal → muted progression down the page. */
 body {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.6;
-  color: #222;
+  color: #222; /* default text color for content on light overlays */
   background: linear-gradient(
     to bottom,
     #008b8b 0%,
@@ -19,103 +24,136 @@ body {
   );
 }
 
-/* --- Layout resets --- */
+
+/* -----------------------
+   Remove gaps between structural elements
+   ----------------------- */
+/* Ensure header, sections, and footer do not create default gaps */
 section, header, footer {
   margin: 0;
   padding: 0;
   border: none;
 }
 
-/* Header */
+
+/* -----------------------
+   HEADER
+   ----------------------- */
+/* Header sits on the very top of the gradient (transparent background),
+   centered content, white text for contrast against top-of-gradient teal. */
 header {
   text-align: center;
   color: white;
-  padding: 4rem 1rem;
-  background: transparent;
+  padding: 4rem 1rem; /* generous vertical padding for breathing room */
+  background: transparent; /* lets the body gradient show through */
 }
 
+/* Big, bold page title */
 header h1 {
   font-size: 2.5rem;
   letter-spacing: 1px;
 }
 
+/* Subheading beneath the name */
 header p {
   font-weight: 300;
   margin-top: 0.5rem;
 }
 
-/* Navigation */
+/* -----------------------
+   NAVIGATION LINKS
+   ----------------------- */
+/* Simple inline nav links under header title */
 nav {
   margin-top: 1rem;
 }
 
 nav a {
-  color: white;
-  text-decoration: none;
-  margin: 0 1rem;
+  color: white;               /* white to be readable on teal */
+  text-decoration: none;      /* remove underline for a minimalist look */
+  margin: 0 1rem;             /* spacing between links */
   font-weight: 500;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease; /* subtle hover effect */
 }
 
 nav a:hover {
-  opacity: 0.7;
+  opacity: 0.7; /* gentle feedback on hover */
 }
 
-/* About section — text left, photo right */
+/* -----------------------
+   ABOUT SECTION (Text left, Photo right)
+   ----------------------- */
+/* Use the #about ID (matches your HTML). This creates a two-column layout. */
 #about {
-  display: flex;
-  min-height: 100vh;
+  display: flex;         /* horizontal layout: left column + right column */
+  min-height: 100vh;     /* make about section at least full viewport height */
+  background: transparent; /* let the page gradient continue through */
 }
 
+/* Left column: text content container */
 .about-text {
-  flex: 1;
-  padding: 4rem;
+  flex: 1;                          /* takes half the horizontal space */
+  padding: 4rem;                    /* inner spacing for readable lines */
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: #003d3d;
-  background: rgba(234,244,242,0.7);
-  backdrop-filter: blur(2px);
+  flex-direction: column;           /* vertical stacking inside the column */
+  justify-content: center;          /* vertically center the content */
+  color: #003d3d;                   /* dark teal text color for contrast */
+  background: rgba(234,244,242,0.7);/* translucent pale overlay for legibility */
+  backdrop-filter: blur(2px);       /* subtle blur behind overlay on supported browsers */
 }
 
+/* Right column: background image that blends into the teal gradient */
 .about-photo {
-  flex: 1;
+  flex: 1;                          /* takes the other half of the horizontal space */
   background-image:
-    linear-gradient(to left, rgba(0,139,139,0.6), rgba(0,139,139,0.1)),
-    url("/files/Eddy_Zoe.jpg");
-  background-size: cover;
-  background-position: center;
-  background-blend-mode: multiply;
+    linear-gradient(to left, rgba(0,139,139,0.6), rgba(0,139,139,0.1)), /* teal overlay */
+    url("/files/Eddy_Zoe.jpg");        /* replace path if your image lives elsewhere */
+  background-size: cover;           /* crop/scale image to fully fill the box */
+  background-position: center;      /* center the image focal point */
+  background-blend-mode: multiply;  /* blend the teal overlay with the photo */
 }
 
-/* Research, Publications, Contact */
+/* -----------------------
+   RESEARCH / PUBLICATIONS / CONTACT
+   ----------------------- */
+/* These sections use IDs in your HTML and rely on the global gradient
+   for background color (transparent here so the body gradient shows). */
 #research, #publications, #contact {
-  padding: 4rem 2rem;
+  padding: 4rem 2rem;    /* generous vertical spacing and horizontal padding */
   background: transparent;
-  color: #003d3d;
+  color: #003d3d;        /* keep text color consistent and readable */
 }
 
+/* Shared heading styling for section headings */
 h2 {
-  color: #004f4f;
-  margin-bottom: 1.5rem;
+  color: #004f4f;        /* slightly deeper teal for headings */
+  margin-bottom: 1.5rem; /* space below headings */
 }
 
+/* Publication / list styles */
 ul {
-  list-style-type: square;
-  padding-left: 1.5rem;
+  list-style-type: square; /* small square bullets for a clean look */
+  padding-left: 1.5rem;    /* indent list from left edge */
 }
 
-/* Links */
+/* -----------------------
+   LINKS
+   ----------------------- */
+/* Default link color and hover behavior for inline links */
 a {
-  color: #005f5f;
-  text-decoration: none;
+  color: #005f5f;       /* teal-ish link color that matches the palette */
+  text-decoration: none;/* no underline by default—keeps minimal aesthetic */
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: underline; /* underline on hover for discoverability */
 }
 
-/* Footer */
+
+/* -----------------------
+   FOOTER
+   ----------------------- */
+/* Simple centered footer that sits on the bottom-of-gradient tones */
 footer {
   text-align: center;
   padding: 1.5rem;
@@ -123,22 +161,27 @@ footer {
   background: transparent;
 }
 
-/* Responsive layout */
+/* -----------------------
+   RESPONSIVE: Mobile / Narrow screens
+   ----------------------- */
+/* Stack the two columns vertically on smaller screens and
+   move the photo above the text (order: photo first, then text) */
 @media (max-width: 800px) {
   #about {
-    flex-direction: column;
-    height: auto;
+    flex-direction: column; /* stack the columns vertically */
+    height: auto;           /* remove forced full-viewport height */
   }
 
   .about-photo {
-    height: 50vh;
-    order: -1;
+    height: 50vh;   /* give the photo a visible portion of the viewport on mobile */
+    order: -1;      /* place photo above the text when stacked */
   }
 
   .about-text {
-    padding: 2rem;
+    padding: 2rem;  /* reduce padding on small screens for better fit */
   }
 
+  /* Make nav links stack vertically on small screens for easier tapping */
   nav a {
     display: block;
     margin: 0.5rem 0;
